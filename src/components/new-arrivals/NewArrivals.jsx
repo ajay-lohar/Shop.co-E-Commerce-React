@@ -1,5 +1,4 @@
 import React, { useState ,useEffect} from 'react'
-import './NewArrivals.css'
 import { Link } from 'react-router-dom'
 
 const NewArrivals = () => {

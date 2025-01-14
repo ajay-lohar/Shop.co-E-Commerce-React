@@ -58,12 +58,13 @@ const Header = ({cartItems,setCartItems}) => {
         </ul>
         <div className="search-bar">
           <div style={{position:"relative"}}>
-          <input type="text" placeholder="Search for product"  onChange={(e)=>setSearch(e.target.value)} value={search}/>
+          <input type="text" placeholder="Search for product"  onChange={(e)=>setSearch(e.target.value)} value={search} />
           {searchedProducts.slice(0, 7).map((product) => {
             return( 
             <Link className="search-inputs"
               to={`./product-page/${product.id}`}
               key={product.id}
+              onClick={()=>{disp.value.toString().slice(0,-1)}}
             ><i class="fa-solid fa-magnifying-glass"></i>
             &nbsp;&nbsp;&nbsp;&nbsp;
               {product.title}

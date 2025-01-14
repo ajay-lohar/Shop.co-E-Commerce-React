@@ -58,6 +58,7 @@ const Header = ({cartItems,setCartItems}) => {
         </ul>
         <div className="search-bar">
           <div style={{position:"relative"}}>
+          <i class="fa-solid fa-magnifying-glass" style={{position:"absolute" ,padding:"12px 12px 12px 18px"}}></i>
           <input type="text" placeholder="Search for product"  onChange={(e)=>setSearch(e.target.value)} value={search} />
           {searchedProducts.slice(0, 7).map((product) => {
             return( 

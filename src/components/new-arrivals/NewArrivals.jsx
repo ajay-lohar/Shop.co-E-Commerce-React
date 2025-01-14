@@ -1,5 +1,6 @@
 import React, { useState ,useEffect} from 'react'
 import { Link } from 'react-router-dom'
+import ProductCard from '../product-card/ProductCard';
 
 const NewArrivals = () => {
 
@@ -29,22 +30,13 @@ const NewArrivals = () => {
         <div className="card-item flex center wrap">
           {products.map((product)=>{
             return(
-             <Link key={product.id} to={`product-page/${product.id}`}>
-              <div className="card">
-                <div className="item-img">
-                  <img src={product.thumbnail} />
-                  </div>
-                  <div className="item-text">
-                    <p>{product.title}</p>
-                    <p>
-                      <div className="rating">
-                       </div> 
-                       </p><div className="pricing">
-                        <p>{product.price}</p>
-                      </div>
-                    </div>
-              </div>
-             </ Link>
+             
+              <ProductCard 
+               rating={product.rating}
+               id={product.id}
+               price={product.price}
+               title={product.title}
+               imageUrl={product.thumbnail} />
           )})
 
           }

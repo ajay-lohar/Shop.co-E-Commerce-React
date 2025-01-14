@@ -12,7 +12,7 @@
 
 
 body {
-    font-family: sans-serif;
+    font-family:  sans-serif , serif;
 }
 
 header {
@@ -229,7 +229,7 @@ header {
 }
 
 .pricing p {
-    font-size: 24px;
+    font-size: 16px;
     font-weight: 700;
     line-height: 27px;
     padding-top: 5px;
@@ -710,7 +710,7 @@ header.scrolled {
 }
 
 .product-img img {
-    width: 500px;
+    width: 400px;
 }
 
 
@@ -718,6 +718,9 @@ header.scrolled {
     background: #f0f0f0;
     margin: 50px;
     border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
 }
 
@@ -727,8 +730,7 @@ header.scrolled {
 }
 
 .title h2 {
-    font-size: 40px;
-    text-align: justify;
+    font-size: 25px;
     padding-top: 20px;
 }
 
@@ -739,6 +741,7 @@ header.scrolled {
 .description p {
     padding-top: 40px;
     color: #a7a5a5;
+    font-size: 14px;
 }
 
 hr {
@@ -791,3 +794,11 @@ hr {
 }
 
 
+.search-inputs{
+    display: block;
+    padding: 10px 10px 10px 20px;  
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    border: 0.1px solid black;
+    color: #000000;
+}

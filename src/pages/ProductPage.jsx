@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import  {React , useEffect, useState } from "react";
 
-const ProductPage = () => {
+const ProductPage = ({cartItems,setCartItems}) => {
   const { productId } = useParams();
 
   const [product, setProduct] = useState(null);
@@ -11,18 +11,26 @@ const ProductPage = () => {
     const data = await res.json();
 
     setProduct(data);
-    console.log(data);
+    // console.log(data);
   }
 
   useEffect(() => {
     getProductById();
   }, []);
+
+  function addItemToCart() {
+    const newArray = [...cartItems, productId];
+    setCartItems(newArray);
+
+    //saving same data in localstorage
+    localStorage.setItem("cartItem", JSON.stringify(newArray));
+  }
    
   return (
      <div >
     {product && (
       <div className="product-detail flex"  >
-        <div className="product-img " >
+        <div className="product-img" >
         <img src={product.thumbnail} alt={product.title} />
         </div>
         <div className="text-content">
@@ -31,9 +39,10 @@ const ProductPage = () => {
                 </div>
                 
                 <div className="pricing">
-                    <p>Price: $ {product.price}</p>
+                    <p>Price: $ {product.price}</p> <br />
                     <p>Discount: {product.discountPercentage}%</p>
                 </div>
+                
                 <div className="description">
                     <p> {product.description}</p>
                 </div>
@@ -47,7 +56,7 @@ const ProductPage = () => {
                 </div>
                 <hr />
                 <div className="add-to-card">
-                    <button >Add to Cart</button>
+                    <button onClick={() => addItemToCart()}>Add to Cart</button>
                 </div>
             </div>
       </div>)}

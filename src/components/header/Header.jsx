@@ -1,7 +1,33 @@
-import React from "react";
-import "./header.css";
+import  {React, useState ,useEffect } from "react";
 
-const Header = () => {
+import { Link } from "react-router-dom";
+
+const Header = ({cartItems,setCartItems}) => {
+
+  const [search,setSearch ]= useState("");
+  const [searchedProducts, setSearchedProducts] = useState([]);
+  
+  const sendReq = async()=>{
+    try {
+      const res = await fetch(`https://dummyjson.com/products/search?q=${search}`)
+      const data = await res.json();
+      setSearchedProducts(data.products);
+      // console.log(data.products)
+    } catch (error) {
+      console.error(error);
+    }
+   
+  }
+
+  useEffect(() => {
+    if (search){
+      sendReq();
+    } else {
+      setSearchedProducts([]);
+    }
+  }, [search]);
+
+
   return (
     <header>
       <div className="sign-up">
@@ -12,7 +38,7 @@ const Header = () => {
       </div>
       <div className="navbar flex">
         <div className="main-logo flex gap">
-          <a href="#">
+          <a href="/">
             <h2>SHOP.CO</h2>
           </a>
         </div>
@@ -31,13 +57,26 @@ const Header = () => {
           </li>
         </ul>
         <div className="search-bar">
-          <input type="text" placeholder="Search for product" />
+          <div style={{position:"relative"}}>
+          <input type="text" placeholder="Search for product"  onChange={(e)=>setSearch(e.target.value)} value={search}/>
+          {searchedProducts.slice(0, 7).map((product) => {
+            return( 
+            <Link className="search-inputs"
+              to={`./product-page/${product.id}`}
+              key={product.id}
+            ><i class="fa-solid fa-magnifying-glass"></i>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+              {product.title}
+            </Link>);
+          })}
+          </div>
           <a href="#">
             <img src="assets/search.svg" alt="" />
           </a>
         </div>
         <div className="hugs">
-          <a href="cart/cart.html">
+          <a href="#">
+          {cartItems.length}
             <img
               src="	https://ajay-lokhande455.github.io/e-commerce/assets/cart.svg"
               alt=""

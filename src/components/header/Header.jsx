@@ -1,6 +1,7 @@
 import  {React, useState ,useEffect } from "react";
 
 import { Link } from "react-router-dom";
+import CartPage from "../../pages/CartPage";
 
 const Header = ({cartItems,setCartItems}) => {
 
@@ -58,7 +59,7 @@ const Header = ({cartItems,setCartItems}) => {
         </ul>
         <div className="search-bar">
           <div style={{position:"relative"}}>
-          <i class="fa-solid fa-magnifying-glass" style={{position:"absolute" ,padding:"12px 12px 12px 18px"}}></i>
+          <i className="fa-solid fa-magnifying-glass" style={{position:"absolute" ,padding:"12px 12px 12px 18px"}}></i>
           <input type="text" placeholder="Search for product"  onChange={(e)=>setSearch(e.target.value)} value={search} />
           {searchedProducts.slice(0, 7).map((product) => {
             return( 
@@ -66,7 +67,7 @@ const Header = ({cartItems,setCartItems}) => {
               to={`./product-page/${product.id}`}
               key={product.id}
               onClick={()=>{disp.value.toString().slice(0,-1)}}
-            ><i class="fa-solid fa-magnifying-glass"></i>
+            ><i className="fa-solid fa-magnifying-glass"></i>
             &nbsp;&nbsp;&nbsp;&nbsp;
               {product.title}
             </Link>);
@@ -77,13 +78,13 @@ const Header = ({cartItems,setCartItems}) => {
           </a>
         </div>
         <div className="hugs">
-          <a href="#">
+          <Link to="cart-page">
           {cartItems.length}
             <img
               src="	https://ajay-lokhande455.github.io/e-commerce/assets/cart.svg"
               alt=""
             />
-          </a>
+          </Link>
           <a href="#">
             <img
               src="https://ajay-lokhande455.github.io/e-commerce/assets/account.svg"

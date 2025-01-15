@@ -19,7 +19,15 @@ const ProductPage = ({cartItems,setCartItems}) => {
   }, []);
 
   function addItemToCart() {
-    const newArray = [...cartItems, productId];
+    console.log(product)
+    const data = {
+      id: product.id,
+      price: product.price,
+      title: product.title,
+      returnPolicy: product.returnPolicy,
+      imageUrl: product.thumbnail,
+    };
+    const newArray = [...cartItems, data];
     setCartItems(newArray);
 
     //saving same data in localstorage

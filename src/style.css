@@ -802,3 +802,20 @@ hr {
     border: 0.1px solid black;
     color: #000000;
 }
+.cart-product{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  
+    border-bottom: 1px solid #cccccc;
+    width: 60vw;
+
+}
+
+.cart-product img{
+    height: 100px;
+}
+.cart-body{
+    margin-top: 10vh;
+}
